@@ -1,0 +1,7 @@
+.swagger-ui .topbar {
+    background: #1a2c96;
+    
+}
+.swagger-ui .topbar .topbar-wrapper img path {
+  fill: #fff;
+}

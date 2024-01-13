@@ -1,0 +1,399 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Backend:Demo",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3100"
+    }
+  ],
+  "tags": [
+    {
+      "name": "userBasic",
+      "description": "Everything about Users"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+
+    "/userBasics/": {
+      "post": {
+        "tags": [
+          "userBasic"
+        ],
+        "summary": "Add new user",
+        "description": "",
+        "operationId": "create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/create_user"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/create_user"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "okk"
+          }
+        },
+        "security": [
+          {
+            "api_key": {}
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "userBasic"
+        ],
+        "summary": "Fetch All Users",
+        "description": "",
+        "operationId": "fetchAll",
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "okk"
+          }
+        },
+        "security": [
+          {
+            "api_key": {}
+          }
+        ]
+      }
+    },
+
+    "/userBasics/login": {
+      "post": {
+        "tags": [
+          "userBasic"
+        ],
+        "summary": "Login to user",
+        "description": "",
+        "operationId": "login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/login_user"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/login_user"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "okk"
+          }
+        },
+        "security": [
+          {
+            "api_key": {}
+          }
+        ]
+      }
+    },
+
+    "/userBasics/{id}": {
+      "get": {
+        "tags": [
+          "userBasic"
+        ],
+        "summary": "Get Profile",
+        "description": "",
+        "operationId": "profile",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "okk"
+          }
+        },
+        "security": [
+          {
+            "api_key": {}
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "userBasic"
+        ],
+        "summary": "Update Profile",
+        "description": "",
+        "operationId": "Update Profile",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/update_user"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/update_user"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "okk"
+          }
+        },
+        "security": [
+          {
+            "api_key": {}
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "userBasic"
+        ],
+        "summary": "Delete a user ",
+        "description": "",
+        "operationId": "delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "okk"
+          }
+        },
+        "security": [
+          {
+            "api_key": {}
+          }
+        ]
+      }
+    },   
+
+    "/userBasics/{id}/receipt": {
+      "get": {
+        "tags": [
+          "userBasic"
+        ],
+        "summary": "Receipt User",
+        "description": "",
+        "operationId": "receipt",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "okk"
+          }
+        },
+        "security": [
+          {
+            "api_key": {}
+          }
+        ]
+      }
+    },
+
+    "/userBasics/send-email/{id}": {
+      "get": {
+        "tags": [
+          "userBasic"
+        ],
+        "summary": "Send E-Mail",
+        "description": "",
+        "operationId": "send-email",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "okk"
+          }
+        },
+        "security": [
+          {
+            "api_key": {}
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "fetch_all_users": {},
+      "get_user": {
+        "required": [
+          "id"
+        ]
+      },
+      "create_user": {
+        "required": [
+          "name",
+          "place",
+          "email",
+          "phone",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "anyName"
+          },
+          "place": {
+            "type": "string",
+            "example": "place1"
+          },
+          "email": {
+            "type": "string",
+            "example": "ran@gmail.com"
+          },
+          "phone": {
+            "type": "string",
+            "example": "111"
+          },
+          "password": {
+            "type": "string",
+            "example": "123"
+          }
+        }
+      },
+      "update_user": {
+        
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "anyName"
+          },
+          "place": {
+            "type": "string",
+            "example": "place1"
+          },
+          "email": {
+            "type": "string",
+            "example": "ran@gmail.com"
+          },
+          "phone": {
+            "type": "string",
+            "example": "111"
+          },
+          "password": {
+            "type": "string",
+            "example": "123"
+          }
+        }
+      },
+      "login_user": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "ran@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "123"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "api_key": {
+        "type": "apiKey",
+        "name": "authorization",
+        "in": "header"
+      }
+    }
+  }
+}

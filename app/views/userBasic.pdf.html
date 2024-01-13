@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>userBasic Receipt</title>
+    <style>
+        @import "https://api.istar.soccer/fonts/style.css";
+
+        body {
+            font-family: 'CorporateS-Regular';
+            font-size: 1.1em;
+            color: #656565;
+        }
+
+        .card {
+            border: 0;
+            margin: 0;
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+        .table {
+            border-bottom: 1px solid #dee2e6;
+            margin: 0;
+        }
+        .table th, .table td {
+           border: 0;
+        }
+        .room-name{   
+            background-color: rgba(253, 186, 116, var(--tw-bg-opacity));          
+            color: #fff !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="card-body">           
+            <div id="userBasic-template" class="card-block">
+                <!-- userBasic Customer Details -->
+                <div id="userBasic-customer-details" class="row pt-2">
+                    <div class="col-6 text-left">
+                        <ul class="px-0 list-unstyled">
+                            <li class="mb-0">{{name}}</li>
+                            <li class="mb-0">{{email}}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="userBasic-customer-details" class="row pt-2">
+                    <div class="col-12">
+                        <ul class="px-0 list-unstyled">
+                            <li class="mb-0">userBasic Date : {{currentDate}}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- userBasic Items Details -->
+                <div id="userBasic-items-details" class="pt-2">
+                    <div class="row">
+                        <div class="table-responsive col-sm-12">
+                            <h5 class=" mb-3"><strong>userBasic Details</strong></h5>
+
+                            <div id="userBasic-customer-details" class="row pt-1">
+                                <div class="col-12">
+                                    <ul class="px-0 list-unstyled">
+                                        <li class="mb-0">
+                                            <div class="row">
+                                                <div class="col-5 text-bold-800">
+                                                    userBasic _id:
+                                                </div>
+                                                <div class="col-7">
+                                                    {{userBasic._id}}
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="mb-0">
+                                            <div class="row">
+                                                <div class="col-5 text-bold-800">
+                                                   userBasic No.:
+                                                </div>
+                                                <div class="col-7">
+                                                    {{userBasic.userBasicID}}
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="mb-0">
+                                            <div class="row">
+                                                <div class="col-5 text-bold-800">
+                                                    Performance period:
+                                                </div>
+                                                <div class="col-7">
+                                                    01.01.2022 – 31.01.2022+
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="mb-0">
+                                            <div class="row">
+                                                <div class="col-5 text-bold-800">
+                                                    Created At:
+                                                </div>
+                                                <div class="col-7">
+                                                    {{createdAt}}
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 text-left">
+                        </div>
+                        <div class="col-6">
+                            <div class="table-responsive">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="userBasic-customer-details" class="row pt-2">
+                    <div class="col-12 text-left">
+                        <ul class="px-0 list-unstyled">
+                            <li class="mb-0 mt-3">We would like to thank you very much for your trust in our work and the great cooperation.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row pt-2">
+                    <div class="col-12 text-left">
+                        <ul class="px-0 list-unstyled">
+                            <li class="mb-0 mt-3">Kind regards</li>
+                            <li class="mb-0">Your Phone No. {{phone}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
