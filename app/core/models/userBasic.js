@@ -51,8 +51,8 @@ userBasicSchema
 });
 
 userBasicSchema.plugin(autoIncrement.plugin, {
-  model: 'userBasic',
-  field: 'userBasicID',
+  model: 'user',
+  field: 'userID',
   startAt: 100000,
   incrementBy: 1
 });
@@ -70,5 +70,5 @@ function _hashPassword(password, saltRounds = Constants.security.saltRounds, cal
 }
 
 
-const userBasicModel = mongoose.model('userBasic', userBasicSchema);
-module.exports= userBasicModel;
+const userModel = mongoose.model('user', userBasicSchema);
+module.exports= userModel;
