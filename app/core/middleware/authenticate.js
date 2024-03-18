@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const User = require('../models/userBasic');
+const User = require('../models/user');
 const { userBasicRepository } = require('../repo/userBasicRepo');
 const UserRepository = new userBasicRepository(User);
 const Constants = require('../../config/constants');

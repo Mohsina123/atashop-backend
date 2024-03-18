@@ -104,6 +104,7 @@ class userBasicService {
 
         // using email find user's account
         const login = await this.userBasicRepo.login(email);
+        console.log('login==>',login)
         if(login) {
             const accessToken = this.generateToken(login);
             login.accessToken = accessToken;

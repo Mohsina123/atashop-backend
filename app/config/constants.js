@@ -71,7 +71,7 @@ const defaultConfig = {
 const environmentConfigs = {
   development: {
     mongo: {
-      uri: process.env.MONGO_URI || 'mongodb://localhost/backend-demo',
+      uri: process.env.MONGO_URI || 'mongodb://localhost/atashop',
     },
     security: {
       saltRounds: 4,
@@ -91,7 +91,7 @@ const environmentConfigs = {
   },
   local: {
     mongo: {
-      uri: process.env.MONGO_URI || 'mongodb://localhost/backend-demo',
+      uri: process.env.MONGO_URI || 'mongodb://localhost/atashop',
     },
     security: {
       saltRounds: 4,
@@ -112,7 +112,7 @@ const environmentConfigs = {
   test: {
     port: 5678,
     mongo: {
-      uri: process.env.MONGO_URI || 'mongodb://localhost/test-backend-demo',
+      uri: process.env.MONGO_URI || 'mongodb://localhost/test-atashop',
     },
     security: {
       saltRounds: 4,

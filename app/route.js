@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const routes = new Router();
-const userBasicRoutes =require ('./core/routes/userBasic.route');
+const OrderRoutes =require ('./core/routes/order.route');
 const errorHandler = require('./core/middleware/error-handler');
 
 /**
@@ -8,8 +8,8 @@ const errorHandler = require('./core/middleware/error-handler');
  * and particulers products route is define below
  */
 
-// userBasics
-routes.use('/userBasics', userBasicRoutes);
+// Orders
+routes.use('/orders', OrderRoutes);
 routes.use(errorHandler);
 
 module.exports = routes; 
