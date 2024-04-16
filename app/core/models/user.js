@@ -5,7 +5,8 @@ const jwt= require ('jsonwebtoken');
 const Constants = require('../../config/constants');
 const Schema = mongoose.Schema;
 
-const userBasicSchema = new Schema({
+const UserSchema
+ = new Schema({
   name:String,
   place:String,
   email:String,
@@ -19,7 +20,8 @@ const userBasicSchema = new Schema({
   role:{
     type:String,
     default: 'user',
-  }
+  },
+  apiKey:String,
 }, {
   timestamps: true,
 });
@@ -33,7 +35,8 @@ function generateToken() {
   });
 }
 
-userBasicSchema
+UserSchema
+
   .pre('save', function(done) {
   // Encrypt password before saving the document
     if (this.isModified('password')) {
@@ -50,7 +53,8 @@ userBasicSchema
   // eslint-enable no-invalid-this
 });
 
-userBasicSchema.plugin(autoIncrement.plugin, {
+UserSchema
+.plugin(autoIncrement.plugin, {
   model: 'user',
   field: 'userID',
   startAt: 100000,
@@ -70,5 +74,6 @@ function _hashPassword(password, saltRounds = Constants.security.saltRounds, cal
 }
 
 
-const userModel = mongoose.model('user', userBasicSchema);
+const userModel = mongoose.model('user', UserSchema
+);
 module.exports= userModel;

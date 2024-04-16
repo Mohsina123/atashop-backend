@@ -1,32 +1,41 @@
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 const User = require('../models/user');
-const { userBasicRepository } = require('../repo/userBasicRepo');
-const UserRepository = new userBasicRepository(User);
 const Constants = require('../../config/constants');
 
-const { sessionSecret } = Constants.security;
+
+const {
+  sessionSecret,
+} = Constants.security;
 
 module.exports = function authenticate(req, res, next) {
-  const { authorization } = req.headers;
+  let authorization;
+
   // get jwt token from header
+  if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+    authorization = req.headers.authorization.split(' ')[1];
+  } else if (req.query && req.query.token) {
+    authorization = req.query.token;
+  }
 
   jwt.verify(authorization, sessionSecret, async (err, decoded) => {
-
     if (err) {
       return res.sendStatus(401);
     }
-    // If token is decoded successfully, find userbasic and attach to our request
+
+    // If token is decoded successfully, find employee and attach to our request
     // for use in our route or other middleware
     try {
-      let userBasic = null;
-      if (decoded) {
-        userBasic = await UserRepository._populate(decoded._id)
-      }
+      let user = null;
 
-      if (!userBasic) {
+      user = await User.findById(decoded._id).exec();
+
+
+      if (!user) {
         return res.sendStatus(401);
       }
-      req.currentuserBasic = userBasic;
+
+      req.currentUser = user;
+
       next();
     } catch (err) {
       next(err);

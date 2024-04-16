@@ -75,7 +75,6 @@ class OrdersController extends BaseController {
 			const [results, itemCount,] = await Promise.all([
 				Order
 					.find(filter)
-					.sort(sort)
 					.exec(),
 				Order.countDocuments(filter),
 

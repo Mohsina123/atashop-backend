@@ -16,7 +16,7 @@ const defaultConfig = {
   root: path.normalize(__dirname + '/../../..'),
   port: process.env.PORT || 3000,
   ip: process.env.IP || '127.0.0.1',
-  apiPrefix: '/', // Could be /api/resource or /api/v2/resource?
+  apiPrefix: '/api', // Could be /api/resource or /api/v2/resource?
   userRoles: ['guest', 'user', 'admin'],
   ORDER_TAX : 7.7,
 

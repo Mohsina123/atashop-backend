@@ -10,6 +10,8 @@ const errorHandler = require('./core/middleware/error-handler');
 
 // Orders
 routes.use('/orders', OrderRoutes);
+// users routes
+routes.use('/user', OrderRoutes);
 routes.use(errorHandler);
 
 module.exports = routes; 
