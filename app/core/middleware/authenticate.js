@@ -9,6 +9,7 @@ const {
 
 module.exports = function authenticate(req, res, next) {
   let authorization;
+  // console.log('req heders authorization==>',req.headers.authorization)
 
   // get jwt token from header
   if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {

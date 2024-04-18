@@ -26,18 +26,18 @@ const UserSchema
   timestamps: true,
 });
 
-function generateToken() {
-  return jwt.sign({
-    _id: this._id,
-    email: this.email,
-  }, Constants.security.sessionSecret, {
-    expiresIn: Constants.security.sessionExpiration,
-  });
-}
+// function generateToken() {
+//   return jwt.sign({
+//     _id: this._id,
+//     email: this.email,
+//   }, Constants.security.sessionSecret, {
+//     expiresIn: Constants.security.sessionExpiration,
+//   });
+// }
 
-UserSchema
 
-  .pre('save', function(done) {
+
+UserSchema.pre('save', function(done) {
   // Encrypt password before saving the document
     if (this.isModified('password')) {
       const {
@@ -53,8 +53,7 @@ UserSchema
   // eslint-enable no-invalid-this
 });
 
-UserSchema
-.plugin(autoIncrement.plugin, {
+UserSchema.plugin(autoIncrement.plugin, {
   model: 'user',
   field: 'userID',
   startAt: 100000,
@@ -72,6 +71,49 @@ UserSchema
 function _hashPassword(password, saltRounds = Constants.security.saltRounds, callback) {
   return bcrypt.hash(password, saltRounds, callback);
 }
+
+
+/**
+ * User Methods
+ */
+UserSchema.methods = {
+  /**
+   * Authenticate - check if the passwords are the same
+   * @public
+   * @param {String} password
+   * @return {Boolean} passwords match
+   */
+  authenticate(password) {
+    return bcrypt.compareSync(password, this.password);
+  },
+
+  /**
+   * Generates a JSON Web token used for route authentication
+   * @public
+   * @return {String} signed JSON web token
+   */
+  generateToken() {
+    return jwt.sign({
+      _id: this._id,
+      email: this.email,
+    }, Constants.security.sessionSecret, {
+      expiresIn: Constants.security.sessionExpiration,
+    });
+  },
+
+  /**
+   * Create password hash
+   * @private
+   * @param {String} password
+   * @param {Number} saltRounds
+   * @param {Function} callback
+   * @return {Boolean} passwords match
+   */
+  _hashPassword(password, saltRounds = Constants.security.saltRounds, callback) {
+    return bcrypt.hash(password, saltRounds, callback);
+  },
+};
+
 
 
 const userModel = mongoose.model('user', UserSchema

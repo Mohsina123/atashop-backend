@@ -1,6 +1,9 @@
 const { Router } = require('express');
 const routes = new Router();
 const OrderRoutes =require ('./core/routes/order.route');
+const UserRoutes =require ('./core/routes/user.route');
+const AuthRoutes= require ('./core/routes/auth.route');
+
 const errorHandler = require('./core/middleware/error-handler');
 
 /**
@@ -8,10 +11,13 @@ const errorHandler = require('./core/middleware/error-handler');
  * and particulers products route is define below
  */
 
+// Authentication
+routes.use('/auth', AuthRoutes);
+
 // Orders
 routes.use('/orders', OrderRoutes);
 // users routes
-routes.use('/user', OrderRoutes);
+routes.use('/user', UserRoutes);
 routes.use(errorHandler);
 
 module.exports = routes; 
