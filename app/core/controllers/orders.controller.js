@@ -60,6 +60,7 @@ class OrdersController extends BaseController {
 			const params = this.filterParams(req.body, this.whitelist);
 			const order = new Order({
 				...params,
+				orderCreater:req.currentUser,
 			});
 			res.status(201).json(await order.save());
 		} catch (err) {
